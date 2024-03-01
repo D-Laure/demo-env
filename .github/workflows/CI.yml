@@ -9,11 +9,12 @@ on:
         
 jobs:
   build:
+    environment: "${{ inputs.enviroment }}"
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
       
-      - run: echo "The Environment is ${{inputs.environment}}"
-      - run: echo "The value of the Environment-Variable DESCRIPTION is ${{vars.DESCRIPTION}}"
+      - run: echo "The Environment is ${{ inputs.environment }}"
+      - run: echo "The value of the Environment-Variable DESCRIPTION is ${{ vars.DESCRIPTION }}"
       - run: echo "My User-Secret is ${{ secrets.MONGODB-USERNAME }}"
