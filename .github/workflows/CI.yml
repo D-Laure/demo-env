@@ -1,24 +1,19 @@
 name: CI
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       environment:
         type: environment
         required: true 
-
+        
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      
+      - run: echo "The Environment is ${{inputs.environment}}"
+      - run: echo "The value of the Environment-Variable DESCRIPTION is ${vars.DESCRIPTION}"
+      - run: echo "My User-Secret is ${{ secrets.MONGODB-USERNAME }}"
